@@ -1,0 +1,49 @@
+THE DATA IS LOCATED AT: Forward_Project/DataCollection/Da vinci/data
+
+***For each Subject Subject x and a Task j there will be a folder in the Data collection in the format Sx. Were x= 1...8, and j=1...6.
+
+***Each data folder Sx contains the following:
+Every file follows a CSV format, where the separator is a space. 
+
+########################
+# The kinematics files #
+########################
+There will be one for each gripper, named:
+	SxTj_kinematics_left.txt
+	SxTk_ninematics_right.txt
+
+	IMPORTANT: the data is recorded ONLY when the foot pedal was pressed, meaning, only when the robot whas active or in movement. If the robot was inactive, no kinematic data is recorded.
+
+	These are the elements in each line or data frame:
+
+	* ut: unix time stamp
+	* Joint angles of the 6 DOF arm (without taking into account the DOF of the gripper opening/closing) <TODO: degrees, radians?>:
+		j1, j2, j3, j4, j5, j6
+	* Tip orientation pose <TODO: verify metric>:
+		q1, q2, q3, q4
+	* Absolute pose of the tip in <TODO: meters, mm, mircons?> (with respect to the robot's origin):
+	x: absolute x pose of the tip
+	y: absolute y pose of the tip
+	z: absolute z pose of the tip
+
+	* gs: state of the gripper. The apperture angle of the gripper joint: <TODO: degrees, radians?>  
+
+	Each line in this file has the following format:
+
+	ut j1 j2 j3 j4 j5 j6 q1 q2 q3 q4 x y z gs
+    
+###################
+# The Color file  #
+###################
+	There will be one for each camera, subject and task named:
+		* SxTj_left_color.avi
+		* SxTj_left_color.avi
+		
+		These files will contain a color video with the entire task. There is one left and right camera because the da Vinci uses stereoscopic vision.
+
+		There will be a corresonding file named:
+		* SxTj_left_color_ts.txt
+		* SxTj_right_color_ts.txt
+		
+		These files will have the unix timestamp of each frame (so it can be traced back to the kinematic file timestamp)   
+
